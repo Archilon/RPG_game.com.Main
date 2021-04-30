@@ -5,15 +5,13 @@ public class Enemies {
     Random r = new Random();
 
     private String name;
-    //private String race;
-    //private String klass;
+    private int armor;
     private int str;
     private int wis;
     private int agi;
     private int HP;
     private int MP;
     private int ATK;
-
 
     public int getStr() {
         return str;
@@ -50,12 +48,10 @@ public class Enemies {
         this.ATK = ATK;
     }
 
-    public Enemies(String n, int s, int w, int a, int hp, int mp, int atk){
+    public Enemies(String n, int ar, int s, int w, int a, int hp, int mp, int atk){
 
         this.name = n;
-        // this.race = r;
-        //this.klass = k;
-        //this.age = a;
+        this.armor = ar;
         this.str = s;
         this.wis = w;
         this.agi = a;
@@ -64,21 +60,10 @@ public class Enemies {
         this.ATK = atk;
     }
     int randomHP = r.nextInt(100)+60;
-    Enemies Warlock = new Enemies("Warlock", 71, 184, 102, randomHP, 220, 17);
-    Enemies Brute = new Enemies("Brute",168, 20, 60, randomHP, 0, 10);
-    Enemies Elf = new Enemies("Dark Elf",50, 92, 41, randomHP, 105, 14);
-    @Override
-    public String toString() {
-        return "Enemies{" +
-                "name='" + name + '\'' +
-                ", str=" + str +
-                ", wis=" + wis +
-                ", agi=" + agi +
-                ", HP=" + HP +
-                ", MP=" + MP +
-                ", ATK=" + ATK +
-                '}';
-    }
+    Enemies Warlock = new Enemies("Warlock", 10, 71, 184, 102, randomHP, 220, 17);
+    Enemies Brute = new Enemies("Brute", 25, 168, 20, 60, randomHP, 0, 10);
+    Enemies Elf = new Enemies("Dark Elf", 9, 50, 92, 41, randomHP, 105, 14);
+
 
 
 
