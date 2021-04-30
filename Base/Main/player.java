@@ -3,6 +3,7 @@ package Main;
 public class player {
     private String name;
     private String classType;
+    private int armor;
     private int age;
     private int str;
     private int wis;
@@ -21,7 +22,7 @@ public class player {
         this.name = name;
     }
 
-    public String getClassType() {
+        public String getClassType() {
         return classType;
     }
 
@@ -78,10 +79,10 @@ public class player {
         this.ATK = ATK;
     }
 
-    public player(String n, String c, int a, int s, int w, int ag, int hp, int mp, int atk){
+    public player(String n, int ar, int a, int s, int w, int ag, int hp, int mp, int atk){
 
         this.name = n;
-        this.classType = c;
+        this.armor = ar;
         this.age = a;
         this.str = s;
         this.wis = w;
@@ -91,9 +92,9 @@ public class player {
         this.ATK = atk;
     }
 
-    player addNameLater = new player("name", "witch", 30, 10,89,20,100,200,15);
-    player addNameLater2 = new player("name2","berzerker", 45, 91,5, 15,150,0,10);
-    player addNameLater3 = new player("name3", "archer", 20, 12, 20, 79, 100, 0, 15);
+    player Witch = new player("Dahlia", 10, 30, 10,89,20,100,200,15);
+    player Berzerker = new player("Grufrol", 33, 45, 91,5, 15,150,0,10);
+    player Archer = new player("Taranath", 33, 20, 12, 20, 79, 100, 0, 15);
 
 
 
