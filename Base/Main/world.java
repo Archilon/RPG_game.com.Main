@@ -7,11 +7,12 @@ public class world {
     Random r = new Random();
     boolean running =true;
     boolean proceed =true;
+    int stage = 0;
     public void run() {
         running = true;
-        proceed = true;
+
         System.out.println("Welcome to Phantom Fields..");
-        while (proceed && running) {
+        while (stage == 1 && running) {
             System.out.println("A stranger approaches, do you:");
             System.out.println("\n1. Attack!\n2. Befriend\n3. Flee");
             int combatStart = sc.nextInt();
@@ -24,7 +25,6 @@ public class world {
             } else {
                 System.out.println("Thank you for playing.");
                 running = false;
-                proceed = false;
             }
 
         }
@@ -36,7 +36,7 @@ public class world {
     }
     public void startEncounter(){
 
-    proceed = false;
+    stage +=1;
     }
     public void charm(){
         String fortune;
@@ -55,7 +55,7 @@ public class world {
             case "2" -> {
                 System.out.println("Your diceroll was " + diceRoll + " and you need 4 or higher to succeed.");
                 System.out.println("You successfully befriended the enemy!");
-                proceed = false;
+                stage += 1;
             }
         }
     }
@@ -76,7 +76,7 @@ public class world {
             case "2" -> {
                 System.out.println("your diceroll was " + diceRoll + " and need 3 or higher to succeed");
                 System.out.println("you successfully fled!");
-                proceed = false;
+                stage += 1;
             }
         }
     }
