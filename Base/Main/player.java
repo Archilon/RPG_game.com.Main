@@ -1,16 +1,16 @@
 package Main;
-//this class contains the player character
+
+import java.util.ArrayList;
+
+//this class contains the player constructor
 public class player {
+    private String attackType;
     private String name;
     private String classType;
-    private int armor;
-    private int age;
-    private int str;
-    private int wis;
-    private int agi;
-    private int HP;
-    private int MP;
-    private int ATK;
+    private double armor;
+    private double HP;
+    private Double maxHP;
+    private double ATK;
     //int lvl;
     //double xp;
 
@@ -30,73 +30,49 @@ public class player {
         this.classType = classType;
     }
 
-        public int getAge() {
-        return age;
-    }
-        public void setAge(int age) {
-        this.age = age;
-    }
 
-        public int getStr() {
-        return str;
-    }
-        public void setStr(int str) {
-        this.str = str;
-    }
-
-        public int getWis() {
-        return wis;
-    }
-        public void setWis(int wis) {
-        this.wis = wis;
-    }
-
-        public int getAgi() {
-        return agi;
-    }
-        public void setAgi(int agi) {
-        this.agi = agi;
-    }
-
-        public int getHP() {
+        public double getHP() {
         return HP;
     }
-        public void setHP(int HP) {
+        public void setHP(double HP) {
         this.HP = HP;
     }
 
-        public int getMP() {
-        return MP;
+        public double getArmor() {
+        return armor;
     }
-        public void setMP(int MP) {
-        this.MP = MP;
+        public void setArmor(double armor) {
+        this.armor = armor;
     }
 
-        public int getATK() {
+        public double getATK() {
         return ATK;
     }
         public void setATK(int ATK) {
         this.ATK = ATK;
     }
 
-    public player(String n, int ar, int a, int s, int w, int ag, int hp, int mp, int atk){
+        public String getAttackType() {
+        return attackType;
+    }
+        public void setAttackType(String attackType) {
+        this.attackType = attackType;
+    }
 
+    public player(String n, String c, String at, double ar,double hp, double mHP, double atk){
+        this.attackType = at;
         this.name = n;
+        this.classType = c;
         this.armor = ar;
-        this.age = a;
-        this.str = s;
-        this.wis = w;
-        this.agi = ag;
         this.HP = hp;
-        this.MP = mp;
+        this.maxHP = mHP;
         this.ATK = atk;
     }
 
-    player Witch = new player("Dahlia", 10, 30, 10,89,20,100,200,15);
-    player Berzerker = new player("Grufrol", 33, 45, 91,5, 15,150,0,10);
-    player Archer = new player("Taranath", 33, 20, 12, 20, 79, 100, 0, 15);
 
-
+    public String toString() {
+        return name + " The " + classType;
+    }
 
 
 
