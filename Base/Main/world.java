@@ -16,6 +16,23 @@ public class world {
     Enemies Elf = new Enemies("Dark Elf", 9, 50, 92, 41, enemyHP(), 105, 11);
     Enemies Vampire = new Enemies("Vampire", 12, 81, 105, 74, enemyHP(), 0, 13);
     Enemies Spriggan = new Enemies("Spriggan", 30, 170, 86, 110, enemyHP(), 127, 10);
+
+    public void mainMenu(){
+        boolean mainMenu = true;
+        while(mainMenu) {
+            System.out.println("\n\n\tinput Anything to continue\n\tOr x to exit game");
+            String mm = sc.nextLine();
+            if(mm.contains("x")){
+                mainMenu=false;
+
+                System.out.println("shutting down");
+            }else{
+                stage = 0;
+                run();}
+        }
+    }
+
+
     public void run() {
 
         player Witch = new player("Dahlia", "Witch", "Magic Missile", 0.93, 75, 75, 15);
@@ -150,10 +167,19 @@ public class world {
         while (stage == 8 && running) {
             randomEncounter();}
         while (stage == 9 && running) {
-            System.out.println("you delivered the message to your king!");
-            running=false;
-            run();
-        }
+            System.out.println("you delivered the message to your king!\n\n");
+            System.out.println("would you like to play again?");
+            System.out.println("1. Yes");
+            System.out.println("2. No");
+            int again = sc.nextInt();
+            switch (again){
+                case 1:
+                    mainMenu();
+                    break;
+                case 2:
+                    running=false;
+                    break;
+        }}
 
     }
     public void randomEncounter(){
@@ -163,9 +189,9 @@ public class world {
                 case 1 -> {
                     randomizeEnemy();
                     System.out.println("As you are walking in the woods, A " + currentEnemy + " approaches, do you:\n");
-                    System.out.println("\t1. Attack!\n\t2. Befriend\n\t3. Flee");
+                    System.out.println("\t1. Attack!\n\t2. Befriend\n\t3. Flee\n\n\t4. return to main menu");
                     int combatStart = sc.nextInt();
-                    if (combatStart > 0 && combatStart < 4) {
+                    if (combatStart > 0 && combatStart <= 4) {
                         switch (combatStart) {
                             case 1:
                                 startEncounter();
@@ -176,10 +202,12 @@ public class world {
                             case 3:
                                 fleeAttempt();
                                 break;
+                            case 4:
+                                mainMenu();
+                                break;
                         }
                     } else {
-                        System.out.println("Thank you for playing.");
-                        running = false;
+                        System.out.println("invalid command");
                     }
                 }   //random enemy walks to you
                 case 2 -> {
