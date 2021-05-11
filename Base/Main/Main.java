@@ -7,12 +7,12 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         world r= new world();
         while(mainMenu) {
-            System.out.println("\n\n\tinput Anything to continue\n\tOr x to exit game");
+            System.out.println("\n\n\tPress any button to continue\n\tOr x to exit game");
             String mm = sc.nextLine();
             if(mm.contains("x")){
                 mainMenu=false;
 
-                System.out.println("shutting down");
+                System.out.println("Shutting down");
             }else{
                 r.run();}
         }
