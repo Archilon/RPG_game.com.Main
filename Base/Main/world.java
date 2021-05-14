@@ -51,94 +51,13 @@ public class world {
 
 
         System.out.println("You chose: " + chosenChar);
-        System.out.println("\nYou have been chosen to deliver a message to your king. you must go through a dark gloomy forest.\nRival kingdom's spies are trying to intercept the message.\n");
+        System.out.println("\nYou have been chosen to deliver a message to your King. You must go through a dark gloomy forest.\nRival kingdom's spies are trying to intercept the message.\n");
         while (stage == 1 && running) {
-            randomEncounter();
-            /*
-            randomizeEnemy();
-            System.out.println("As you start your journey. A " + currentEnemy + " approaches, do you:\n");
-            System.out.println("\t1. Attack!\n\t2. Befriend\n\t3. Flee");
-            int combatStart = sc.nextInt();
-            if (combatStart > 0 && combatStart < 4) {
-                switch (combatStart) {
-                    case 1:
-                        startEncounter();
-                        break;
-                    case 2:
-                        charm();
-                        break;
-                    case 3:
-                        fleeAttempt();
-                        break;
-                }
-            } else {
-                System.out.println("Thank you for playing.");
-                running = false;
-            }*/
-
-        }
+            randomEncounter();}
         while (stage == 2 && running){
-            randomEncounter();
-            /*
-            randomizeEnemy();
-            System.out.println("On your path you see a tavern, it looks as if there could be outlaws residing inside it.");
-            System.out.println("But, there could also be someone that can help you on your quest.");
-            System.out.println("Do you enter the tavern?:");
-            System.out.println("\t1.Yes\n\t2.No");
-            int combatStart = sc.nextInt();
-            if (combatStart > 0 && combatStart < 3) {
-                switch (combatStart) {
-                    case 1:
-                        System.out.println("As you enter the tavern, you have the choice of talking to the barkeep or start a fight!");
-                        System.out.println("\n1.Speak to the barkeep\n2.Pick a fight with someone in the bar");
-                        int choice = sc.nextInt();
-                        if (choice > 0 && choice < 3) {
-                            switch (choice) {
-                                case 1:
-                                    charm();
-                                    break;
-                                case 2:
-                                    startEncounter();
-                                    break;
-                            }}
-                        break;
-                    case 2:
-                        stage+=1;
-                        break;
-
-                }
-            } else {
-                System.out.println("Thank you for playing.");
-                running = false;
-            }*/
-
-        }
+            randomEncounter();}
         while (stage == 3 && running) {
-            randomEncounter();
-            /*
-            randomizeEnemy();
-            System.out.println("A farmer runs up to you, and asks for your help.\nHis farm is being attacked\n");
-            System.out.println("What would you like to do?");
-            System.out.println("\t1. Help!\n\t2. Try talking to the attacker\n\t3. Ignore his request");
-            int combatStart = sc.nextInt();
-            if (combatStart > 0 && combatStart < 4) {
-                switch (combatStart) {
-                    case 1:
-                        startEncounter();
-                        break;
-                    case 2:
-                        charm();
-                        break;
-                    case 3:
-                        fleeAttempt();
-                        break;
-                }
-            } else {
-                System.out.println("Thank you for playing.");
-                running = false;
-            }*/
-
-        }
+            randomEncounter();}
         while (stage == 4 && running) {
             randomEncounter();}
         while (stage == 5 && running) {
@@ -150,7 +69,7 @@ public class world {
         while (stage == 8 && running) {
             randomEncounter();}
         while (stage == 9 && running) {
-            System.out.println("you delivered the message to your king!");
+            System.out.println("You successfully delivered the message to your King!");
             running=false;
             run();
         }
@@ -158,7 +77,7 @@ public class world {
     }
     public void randomEncounter(){
         if(stage<8){
-            int enemy = r.nextInt(4)+1;
+            int enemy = r.nextInt(6)+1;
             switch (enemy) {
                 case 1 -> {
                     randomizeEnemy();
@@ -203,7 +122,7 @@ public class world {
                                         case 2:
                                             startEncounter();
                                             break;
-                                    }}
+                                        }}
                                 break;
                             case 2:
                                 stage+=1;
@@ -268,6 +187,24 @@ public class world {
                                 fleeAttempt();
                                 break;
                         }}} //merchant atk encounter
+                case 6 -> {
+                    randomizeEnemy();
+                    System.out.println("While you are trying to rest and make a fire, you hear an enemy approaching quickly.\n");
+                    System.out.println("What would you like to do?");
+                    System.out.println("\t1. Attack!\n\t2. Try talking to the enemy\n\t3. Flee");
+                    int combatStart = sc.nextInt();
+                    if (combatStart > 0 && combatStart < 4) {
+                        switch (combatStart) {
+                            case 1:
+                                startEncounter();
+                                break;
+                            case 2:
+                                charm();
+                                break;
+                            case 3:
+                                fleeAttempt();
+                                break;
+                        }}}//rest encounter
             }}else if(stage == 8){
             randomizeEnemy();
             System.out.println("You can see the King's castle, and start running as fast as you can towards the castle. \nBut unfortunately " + currentEnemy + " runs up and catches you.\nThis time you can't flee as you are so close to the castle.\nDefeat the enemy!");
@@ -278,8 +215,7 @@ public class world {
         combat=true;
         System.out.println("The " + currentEnemy + " engages you in combat!\n");
         while(currentEnemy.getHP() > 0 || chosenChar.getHP() > 0){
-            System.out.println(currentEnemy + " currently has " + currentEnemy.getHP());
-            System.out.println("and you currently have " + chosenChar.getHP());
+            System.out.println(currentEnemy + " currently has " + currentEnemy.getHP() + "\n" + "and you currently have: " + chosenChar.getHP());
             System.out.println("What do you want to do?\n");
             System.out.println("\t1.Attack!");
             System.out.println("\t2.Defend!");
@@ -290,12 +226,12 @@ public class world {
             if (combatChoice > 0 && combatChoice < 5){
                 switch (combatChoice) {
                     case 1:
-                        System.out.println("You attack the enemy with " + chosenChar.getAttackType() + " and deal " + chosenChar.getATK() + " damage\n");
+                        System.out.println("You attack the enemy with " + chosenChar.getAttackType() + " and deal " + chosenChar.getATK() + " damage.\n");
                         currentEnemy.setHP(currentEnemy.getHP() - chosenChar.getATK());
                         if(currentEnemy.getHP()<0){
                             break;
                         }
-                        System.out.println(currentEnemy + " retaliates and deals " + currentEnemy.getATK() + "damage\n");
+                        System.out.println(currentEnemy + " retaliates and deals " + currentEnemy.getATK() + "damage.\n");
                         chosenChar.setHP(chosenChar.getHP() - currentEnemy.getATK());
                         break;
                     case 2:
@@ -356,16 +292,16 @@ public class world {
         int lines = r.nextInt(3)+1;
         switch (lines){
             case 1:
-                System.out.println("Please, I don't want to fight. I can show you the way forward.\n*he looks really frightened. shows you the right direction and runs off*\n");
+                System.out.println("Please, I don't want to fight. I can show you the way forward.\n*He looks really frightened, shows you the right direction and runs off*\n");
                 stage++;
                 break;
             case 2:
-                System.out.println("The king told me about you, he told me to show you the way forward.\n*he looks at you with honor, and shows you the direction you need to go*\n");
+                System.out.println("The King told me about you, he told me to show you the way forward.\n*He looks at you with honor, and shows you the direction you need to go*\n");
                 stage++;
                 break;
             case 3:
                 System.out.println("Lets have a drink! After that I can show you the way forward.\n");
-                System.out.println("*you both take a drink and after that you continue your journey*\n");
+                System.out.println("*You both take a drink and after that you continue your journey*\n");
                 stage++;
                 break;
 
@@ -393,20 +329,25 @@ public class world {
         }
     }
     public void randomizeEnemy(){
-        int enemy = r.nextInt(5);
+            int enemy = r.nextInt(5);
         switch (enemy) {
-            case 0 -> {currentEnemy = Warlock;}
-            case 1 -> {currentEnemy = Brute;}
-            case 2 -> {currentEnemy = Elf; }
-            case 3 -> {currentEnemy = Vampire;}
-            case 4 -> {currentEnemy = Spriggan;}
+            case 0 -> {currentEnemy = Warlock;
+            Warlock.setHP(enemyHP());}
+            case 1 -> {currentEnemy = Brute;
+            Brute.setHP(enemyHP());}
+            case 2 -> {currentEnemy = Elf;
+            Elf.setHP(enemyHP());}
+            case 3 -> {currentEnemy = Vampire;
+            Vampire.setHP(enemyHP());}
+            case 4 -> {currentEnemy = Spriggan;
+            Spriggan.setHP(enemyHP());}
         }}
     public int enemyHP(){
         int randomHP = r.nextInt(40)+60;
         return randomHP;
     }
     public int enemyATK(){
-        int randomATK = r.nextInt(10)+3;
+        int randomATK = r.nextInt(3)+10;
         return randomATK;
     }
     public void combatFleeAttempt(){

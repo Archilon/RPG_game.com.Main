@@ -9,7 +9,7 @@ public class player {
     private double maxHP;
     private double ATK;
     private int numberHealthPotions = 3;
-    private double healthPotion = 25.0;
+    private double healthPotion = 30.0;
     private int HPPotionDropChance = 25;
 
     //int lvl;
@@ -70,7 +70,7 @@ public class player {
     public void healthCheck(){
         if(HP>maxHP){
             HP=maxHP;
-            System.out.println("\t>you healed to max HP\n");
+            System.out.println("\t>You healed to max HP\n");
 
         }
 
