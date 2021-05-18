@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class world {
+    JTextAreaOutputStream text;
     JProgressBar Health = new JProgressBar();
     JProgressBar enemyHealth = new JProgressBar();
     int buttonChoice;
@@ -50,11 +51,14 @@ public class world {
         enemyHealth.setValue(0);
         Health.setValue(0);
         if (chosenChar==null){
-            System.out.println("1." + Witch + "\n");
-            System.out.println("2." + Berzerker + "\n");
-            System.out.println("3." + Archer + "\n");
+            System.out.println(Witch + "\n");
+            System.out.println(Berzerker + "\n");
+            System.out.println(Archer + "\n");
         }
-
+        button1.setText("Witch");
+        button2.setText("Berzerker");
+        button3.setText("Archer");
+        button4.setVisible(false);
         while(stage == 0 && running){
             if (chosenChar==null){
                 buttonPress();
@@ -110,48 +114,39 @@ public class world {
         Health.setValue(chosenChar.getHP());
         Thread.sleep(1000);
         while (stage == 1 && running) {
-            System.out.println("current stage = " + stage);
             randomEncounter();
 
         }
         while (stage == 2 && running) {
-            System.out.println("current stage = " + stage);
             randomEncounter();
 
         }
         while (stage == 3 && running) {
-            System.out.println("current stage = " + stage);
             randomEncounter();
 
         }
         while (stage == 4 && running) {
-            System.out.println("current stage = " + stage);
             randomEncounter();
 
         }
         while (stage == 5 && running) {
-            System.out.println("current stage = " + stage);
             randomEncounter();
 
         }
         while (stage == 6 && running) {
-            System.out.println("current stage = " + stage);
             randomEncounter();
 
         }
         while (stage == 7 && running) {
-            System.out.println("current stage = " + stage);
             randomEncounter();
 
         }
         while (stage == 8 && running) {
-            System.out.println("current stage = " + stage);
             randomEncounter();
 
         }
         while (stage == 9 && running) {
-            System.out.println("current stage = " + stage);
-            System.out.println("you delivered the message to your king!\n\n");
+            System.out.println("You delivered the message to your king!\n\n");
             break;}
     }   //the core game
     public void randomEncounter() throws InterruptedException {
@@ -167,12 +162,16 @@ public class world {
             Thread.sleep(100);
             switch (encounter) {
                 case 1 -> {
+                    button1.setText("Attack");
+                    button2.setText("Befriend");
+                    button3.setText("Flee");
+                    button4.setText("Restart Game");
                     randomizeEnemy();
                     enemymaxHP();
                     enemyHealth.setToolTipText("EnemyHP :" + currentEnemy.getHP());
                     Thread.sleep(500);
                     System.out.println("As you are walking in the woods, A " + currentEnemy + " approaches, do you:\n");
-                    System.out.println("\t1. Attack!\n\t2. Befriend\n\t3. Flee\n\n\t4. return to main menu");
+                    System.out.println("\t1. Attack!\n\t2. Befriend\n\t3. Flee\n\n\t4. Restart game");
                     Thread.sleep(500);
                     clearButton();
                     while (buttonChoice > 6) {
@@ -187,18 +186,26 @@ public class world {
                             case 3:
                                 fleeAttempt();
                                 break;
+                            case 4:
+                                returnToMain();
+                                break;
 
                         }
                     }
                 }   //random enemy walks to you
                 case 2 -> {
+                    button1.setText("Yes");
+                    button2.setText("No");
+                    button3.setText("Restart Game");
+
                     randomizeEnemy();
                     enemymaxHP();
                     System.out.println("On your path you see a tavern, it looks as if there could be outlaws residing inside it.");
                     System.out.println("But, there could also be someone that can help you on your quest.");
                     System.out.println("Do you enter the tavern?:");
-                    System.out.println("\t1.Yes\n\t2.No");
+                    System.out.println("\t1. Yes\n\t2. No\n\n\t3. Restart game");
                     Thread.sleep(1000);
+                    button4.setVisible(false);
                     clearButton();
                     while (buttonChoice > 6) {
                         buttonPress();
@@ -208,16 +215,20 @@ public class world {
                                 System.out.println("As you enter the tavern, you have the choice of talking to the barkeep or start a fight!");
                                 System.out.println("\n1.Speak to the barkeep\n2.Pick a fight with someone in the bar");
                                 Thread.sleep(1000);
-
+                                button1.setText("Speak");
+                                button2.setText("Fight");
+                                button3.setVisible(false);
                                 clearButton();
                                 while (buttonChoice > 6) {
                                     buttonPress();
                                     switch (buttonChoice) {
                                         case 1:
+                                            button3.setVisible(true);
                                             clearButton();
                                             charm();
                                             break;
                                         case 2:
+                                            button3.setVisible(true);
                                             clearButton();
                                             startEncounter();
                                             break;
@@ -226,19 +237,25 @@ public class world {
                                 break;
                             case 2:
                                 clearButton();
-                                stage += 1;
+                                fleeAttempt();
                                 break;
+                            case 3:
+                                returnToMain();
 
                         }
                     }
                 }   //Tavern encounter
                 case 3 -> {
                     randomizeEnemy();
-
+                    button4.setVisible(true);
                     enemymaxHP();
+                    button1.setText("Help");
+                    button2.setText("Charm");
+                    button3.setText("Flee");
+                    button4.setText("Restart Game");
                     System.out.println("A farmer runs up to you, and asks for your help.\nHis farm is being attacked\n");
                     System.out.println("What would you like to do?");
-                    System.out.println("\t1. Help!\n\t2. Try talking to the attacker\n\t3. Ignore his request");
+                    System.out.println("\t1. Help!(engage the enemy)\n\t2. Try talking to the attacker(charm the enemy)\n\t3. Ignore his request(flee attempt)\n\n\t4. Restart game");
                     Thread.sleep(1000);
                     clearButton();
                     while (buttonChoice > 6) {
@@ -255,16 +272,24 @@ public class world {
                             case 3:
                                 clearButton();
                                 fleeAttempt();
+                                break;
+                            case 4:
+                                returnToMain();
                                 break;
                         }
                     }
                 }   //Farmer Encounter
                 case 4 -> {
                     randomizeEnemy();
+                    button4.setVisible(true);
                     enemymaxHP();
+                    button1.setText("Help");
+                    button2.setText("Charm enemy");
+                    button3.setText("Flee");
+                    button4.setText("Restart Game");
                     System.out.println("A small child approaches, saying their mother has been captured by a monster and asks for your help.\n");
                     System.out.println("What would you like to do?");
-                    System.out.println("\t1. Help!\n\t2. Try talking to the attacker\n\t3. Ignore their request");
+                    System.out.println("\t1. Help!\n\t2. Try talking to the attacker\n\t3. Ignore their request(flee situation)\n\n\t4. Restart game");
                     Thread.sleep(1000);
                     clearButton();
                     while (buttonChoice > 6) {
@@ -278,6 +303,9 @@ public class world {
                                 break;
                             case 3:
                                 fleeAttempt();
+                                break;
+                            case 4:
+                                returnToMain();
                                 break;
                         }
                     }
@@ -299,8 +327,13 @@ public class world {
             HPupdate();
             Thread.sleep(100);
             while(currentEnemy.getHP() > 0 || chosenChar.getHP()> 0 ){
+                button4.setVisible(true);
                 buttonPress();
                 HPupdate();
+                button1.setText("Attack");
+                button2.setText("Health-Potions: " + chosenChar.getNumberHealthPotions());
+                button3.setText("Flee");
+                button4.setText("Restart Game");
                 switch (buttonChoice) {
 
                     case 1:
@@ -327,15 +360,7 @@ public class world {
                         Thread.sleep(500);
                         if(chosenChar.getHP()<=0){
                             System.out.println(">You died!");
-                            System.out.println(".");
-                            Thread.sleep(500);
-                            System.out.print(".");
-                            Thread.sleep(500);
-                            System.out.print(".");
-                            Thread.sleep(500);
-                            System.out.print(".");
-                            Thread.sleep(500);
-                            System.out.print(".");
+
                             returnToMain();
                             break;
                         }
@@ -348,7 +373,6 @@ public class world {
                         Thread.sleep(100);
                         clearButton();
                         chosenChar.useHealthPotion();
-                        combatChoice();
                         break;
                     case 3:
                         Thread.sleep(100);
@@ -376,15 +400,6 @@ public class world {
                 run();
             }if(chosenChar.getHP()<0){
                 System.out.println(">You died!");
-                System.out.println(".");
-                Thread.sleep(500);
-                System.out.print(".");
-                Thread.sleep(500);
-                System.out.print(".");
-                Thread.sleep(500);
-                System.out.print(".");
-                Thread.sleep(500);
-                System.out.print(".");
                 returnToMain();
             }else if(combat==false){
                 stage++;
@@ -436,20 +451,20 @@ public class world {
     public void fleeAttempt() throws InterruptedException {
         String fortune;
         int diceRoll = r.nextInt(10)+1;
-        if (diceRoll < 2){
-            fortune = "1";
-        }else{
+        if (diceRoll <= 2){
             fortune = "2";
+        }else{
+            fortune = "1";
         }
         switch (fortune) {
             case "1":
-                System.out.println("Your diceroll was " + diceRoll + " and you need 3 or higher to succeed");
-                System.out.println(currentEnemy + " Chased you and caught you!\n");
+                System.out.println(">Your diceroll was " + diceRoll + " and you need 4 or higher to succeed");
+                System.out.println(">" + currentEnemy + " chased you and caught you!\n");
                 startEncounter();
                 break;
             case "2":
-                System.out.println("Your diceroll was " + diceRoll + " and you need 3 or higher to succeed");
-                System.out.println("You successfully fled!\n");
+                System.out.println(">Your diceroll was " + diceRoll + " and you need 4 or higher to succeed");
+                System.out.println(">You successfully fled!\n");
                 stage ++;
                 break;
         }
@@ -538,8 +553,9 @@ public class world {
         controls.setLayout(new FlowLayout());
         Container contentPane = frame.getContentPane ();
         contentPane.setLayout (new FlowLayout());
-
-
+        String imgURL = "Pics/field.jpg";
+        JLabel pic = new JLabel(new ImageIcon(imgURL));
+        frame.getContentPane().add(pic);
         frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         controls.add(PHP);
         controls.add(Health);
@@ -560,7 +576,7 @@ public class world {
 
         JTextAreaOutputStream out = new JTextAreaOutputStream (textArea);
         System.setOut (new PrintStream(out));
-        frame.setBounds(40,40,920,500);
+        frame.setBounds(40,40,920,650);
         frame.setResizable(false);
     }   //Starts the GUI
     public void HPupdate(){
@@ -580,7 +596,19 @@ public class world {
         enemyHealth.setMaximum(enemyHealthmax);
     } //GUI setting enemy health-bar to maximum
     public void returnToMain() throws InterruptedException {
-        System.out.println(">returning to Main Menu");
+        Thread.sleep(500);
+        System.out.println(">Returning to Main Menu");
+        System.out.println(">5");
+        Thread.sleep(1000);
+        System.out.println(">4");
+        Thread.sleep(1000);
+        System.out.println(">3");
+        Thread.sleep(1000);
+        System.out.println(">2");
+        Thread.sleep(1000);
+        System.out.println(">1");
+        Thread.sleep(1000);
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         chosenChar = null;
         stage = 0;
         run();
@@ -591,9 +619,6 @@ public class world {
         System.out.println("\t1.Attack!");
         System.out.println("\t2.Use Health-Potion");
         System.out.println("\t3.Flee\n\n");
-        System.out.println("\t4.restart game!\n");
+        System.out.println("\t4.Restart game!\n");
     }
-
-
-
 }
