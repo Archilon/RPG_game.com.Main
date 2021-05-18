@@ -4,16 +4,15 @@ public class player {
     private String attackType;
     private String name;
     private String classType;
-    private double armor;
-    private double HP;
-    private double maxHP;
-    private double ATK;
+    private int armor;
+    private int HP;
+    private int maxHP;
+    private int ATK;
     private int numberHealthPotions = 3;
-    private double healthPotion = 25.0;
-    private int HPPotionDropChance = 25;
+    private int healthPotion = 30;
+    private int HPPotionDropChance = 100;
 
-    //int lvl;
-    //double xp;
+
     public String getName() {
         return name;
     }
@@ -28,21 +27,21 @@ public class player {
         this.classType = classType;
     }
 
-    public double getHP() {
+    public int getHP() {
         return HP;
     }
-    public void setHP(double HP) {
+    public void setHP(int HP) {
         this.HP = HP;
     }
 
-    public double getArmor() {
+    public int getArmor() {
         return armor;
     }
-    public void setArmor(double armor) {
+    public void setArmor(int armor) {
         this.armor = armor;
     }
 
-    public double getATK() {
+    public int getATK() {
         return ATK;
     }
     public void setATK(int ATK) {
@@ -70,7 +69,7 @@ public class player {
     public void healthCheck(){
         if(HP>maxHP){
             HP=maxHP;
-            System.out.println("\t>you healed to max HP\n");
+            System.out.println("\t>You healed to max HP\n");
 
         }
 
@@ -89,7 +88,11 @@ public class player {
         this.attackType = attackType;
     }
 
-    public player(String n, String c, String at, double ar,double hp, double mHP, double atk){
+    public int getMaxHP() {
+        return maxHP;
+    }
+
+    public player(String n, String c, String at, int ar, int hp, int mHP, int atk){
         this.attackType = at;
         this.name = n;
         this.classType = c;
@@ -101,7 +104,7 @@ public class player {
 
 
     public String toString() {
-        return name + " The " + classType;
+        return "\t" + name + " The " + classType + "\n\tHas " + HP + " Health" + "\n\tuses " + attackType + " that deals " + ATK + " Damage";
     }
 
 

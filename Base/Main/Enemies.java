@@ -1,15 +1,16 @@
 package Main;
+import java.util.Random;
 //this class contains the enemy constructor
 public class Enemies {
-
+    Random r = new Random();
     private String name;
-    private double armor;
+    private int armor;
     private int str;
     private int wis;
     private int agi;
-    private double HP;
+    private int HP;
     private int MP;
-    private double ATK;
+    private int ATK;
 
     public int getStr() {
         return str;
@@ -32,24 +33,24 @@ public class Enemies {
         this.agi = agi;
     }
 
-    public double getHP() {
+    public int getHP() {
         return HP;
     }
-    public void setHP(double HP) {
+    public void setHP(int HP) {
         this.HP = HP;
     }
 
-    public double getATK() {
+    public int getATK() {
         return ATK;
     }
-    public void setATK(double ATK) {
+    public void setATK(int ATK) {
         this.ATK = ATK;
     }
 
-    public double getArmor() {
+    public int getArmor() {
         return armor;
     }
-    public void setArmor(double armor) {
+    public void setArmor(int armor) {
         this.armor = armor;
     }
 

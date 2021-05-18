@@ -1,14 +1,22 @@
 package Main;
-import java.util.Scanner;
+
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
+
+import javax.swing.*;
+
 public class Main {
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws InterruptedException {
         world r= new world();
-        r.mainMenu();
 
+        r.showGUI();
+        r.run();
 
-
-        // write your code here
     }
 }
