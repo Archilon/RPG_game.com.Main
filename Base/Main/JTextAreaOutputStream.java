@@ -29,9 +29,9 @@ public class JTextAreaOutputStream extends OutputStream
             }
         });
     }
-
     @Override
     public void write(int b) throws IOException
     {
         write (new byte [] {(byte)b}, 0, 1);
-    }}
+    }
+}
