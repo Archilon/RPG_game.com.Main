@@ -56,7 +56,7 @@ public class world {
         }
 
         while(stage == 0 && running){
-                if (chosenChar==null){
+            if (chosenChar==null){
                 buttonPress();
                 switch (buttonChoice){
                     case 1:
@@ -89,9 +89,9 @@ public class world {
                 }
 
 
-        }//char select
-        Thread.sleep(500);
-        buttonPress();
+            }//char select
+            Thread.sleep(500);
+            buttonPress();
 
         }
 
@@ -287,18 +287,18 @@ public class world {
     }   //encounter randomizer method
     public void startEncounter() throws InterruptedException {
         if(combat==true){
-        HPupdate();
-        Thread.sleep(1000);
-        System.out.println("\n\t#The " + currentEnemy + " engages you in combat#\n");
-        Thread.sleep(1000);
-        Thread.sleep(1000);
-        combatChoice();
-        clearButton();
-        clearButton();
-        clearButton();
-        HPupdate();
-        Thread.sleep(100);
-        while(currentEnemy.getHP() > 0 || chosenChar.getHP()> 0 ){
+            HPupdate();
+            Thread.sleep(1000);
+            System.out.println("\n\t#The " + currentEnemy + " engages you in combat#\n");
+            Thread.sleep(1000);
+            Thread.sleep(1000);
+            combatChoice();
+            clearButton();
+            clearButton();
+            clearButton();
+            HPupdate();
+            Thread.sleep(100);
+            while(currentEnemy.getHP() > 0 || chosenChar.getHP()> 0 ){
                 buttonPress();
                 HPupdate();
                 switch (buttonChoice) {
@@ -360,7 +360,7 @@ public class world {
                         break;
                 }continue;
             }
-        if(currentEnemy.getHP() <= 0){
+            if(currentEnemy.getHP() <= 0){
                 stage++;
                 int drop = r.nextInt(100)+1;
 
@@ -474,36 +474,36 @@ public class world {
             System.out.println("you cant try to flee again");
         }
         else if(fleeTry==false){
-        String fortune;
-        int diceRoll = r.nextInt(10)+1;
-        if (diceRoll >= 8){
-            fortune = "2";
-        }else{
-            fortune = "1";
-        }
-        switch (fortune) {
-            case "1":
-                Thread.sleep(500);
-                System.out.println("Your diceroll was " + diceRoll + " and you need 8 or higher to succeed");
-                System.out.println(currentEnemy + " You failed to flee!\n");
-                chosenChar.setHP(chosenChar.getHP() - currentEnemy.getATK());
-                Thread.sleep(500);
-                System.out.println(currentEnemy + " hits you for " + currentEnemy.getATK());
-                if(chosenChar.getHP()>0){
-                    combatChoice();
-                }
-                fleeTry = true;
-                break;
-            case "2":
-                Thread.sleep(500);
-                System.out.println("Your diceroll was " + diceRoll + " and you need 8 or higher to succeed");
-                Thread.sleep(500);
-                System.out.println("You successfully fled!\n");
-                Thread.sleep(500);
-                fleeTry = true;
-                stage++;
-                break;
-        }}
+            String fortune;
+            int diceRoll = r.nextInt(10)+1;
+            if (diceRoll >= 8){
+                fortune = "2";
+            }else{
+                fortune = "1";
+            }
+            switch (fortune) {
+                case "1":
+                    Thread.sleep(500);
+                    System.out.println("Your diceroll was " + diceRoll + " and you need 8 or higher to succeed");
+                    System.out.println(currentEnemy + " You failed to flee!\n");
+                    chosenChar.setHP(chosenChar.getHP() - currentEnemy.getATK());
+                    Thread.sleep(500);
+                    System.out.println(currentEnemy + " hits you for " + currentEnemy.getATK());
+                    if(chosenChar.getHP()>0){
+                        combatChoice();
+                    }
+                    fleeTry = true;
+                    break;
+                case "2":
+                    Thread.sleep(500);
+                    System.out.println("Your diceroll was " + diceRoll + " and you need 8 or higher to succeed");
+                    Thread.sleep(500);
+                    System.out.println("You successfully fled!\n");
+                    Thread.sleep(500);
+                    fleeTry = true;
+                    stage++;
+                    break;
+            }}
     }   //flee attempt method for combat
     public void buttonPress(){
         button1.addActionListener(new ActionListener() {
@@ -517,7 +517,7 @@ public class world {
         button3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 buttonChoice = 3;
-                }});
+            }});
         button4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 buttonChoice = 4;
